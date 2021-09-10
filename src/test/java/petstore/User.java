@@ -18,7 +18,7 @@ public class User {
     }
 
     // Incluir usuario
-    @Test
+    @Test(priority = 1)
     public void incluirUsuario() throws IOException {
         String jsonBody = lerJson("src/test/resources/usuarios/user2.json");
 
@@ -40,9 +40,9 @@ public class User {
 
     }
 
-    @Test
+    @Test(priority = 2)
     public void consultarUsuario(){
-        String userUsername = "Tonex";
+        String userUsername = "Tonex1";
 
         given()
                 .contentType("application/json")
@@ -52,10 +52,11 @@ public class User {
         .then()
                 .log().all()
                 .statusCode(200)
-                .body("username", is("Tonex"))
+                .body("username", is("Tonex1"))
                 .body("firstName",is("Everton"))
                 .body("email",is("tone@teste.com"))
         ;
+
     }
 
 

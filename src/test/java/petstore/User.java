@@ -40,5 +40,23 @@ public class User {
 
     }
 
+    @Test
+    public void consultarUsuario(){
+        String userUsername = "Tonex";
+
+        given()
+                .contentType("application/json")
+                .log().all()
+        .when()
+                .get(uri + "/" + userUsername)
+        .then()
+                .log().all()
+                .statusCode(200)
+                .body("username", is("Tonex"))
+                .body("firstName",is("Everton"))
+                .body("email",is("tone@teste.com"))
+        ;
+    }
+
 
 }
